@@ -176,29 +176,23 @@ Regular expressions can be broken down into two sections. The first section is t
 
 It's important to keep in mind that flags are optional and are not mandatory. The reason for the optionality is that flags change the behaviour of a regex pattern.
 
-As an example, let's use "The sky is blue" as the input string.
+As an example, let's use "Why is the sky blue?" as the input string.
 
 #### No Flags
 
-<pre>
-/[a-z]/ => T<mark>h</mark>e sky is blue
-</pre>
+![alt text](./img/regex-img-37_no_flags.png)
 
 - In the current regex pattern will look for the first lower case letter in the input string.
 
 #### Global Flag or "g"
 
-<pre>
-/[a-z]/g => T<mark>he</mark> <mark>sky</mark> <mark>is</mark> <mark>blue</mark>
-</pre>
+![alt text](./img/regex-img-37_global_flag.png)
 
 - By placing a "g" at the end of the expression, we're telling the regex engine to match all the lower case letters in the input string. However, the upper case "T" is still unmatched.
 
 #### Case Insensitivity Flag or "i"
 
-<pre>
-/[a-z]/gi => <mark>The</mark> <mark>sky</mark> <mark>is</mark> <mark>blue</mark>
-</pre>
+![alt text](./img/regex-img-37_case_flag.png)
 
 - To correctly capture all the letters in our input string - ignoring upper case and lower case letters - we can place a second flag to ignore distinction made between upper case and lower case letters. We can achieve this by placing an "i" after the "g".
 
@@ -206,9 +200,7 @@ In summary, what we've done is we've modifed the initial character class range [
 
 To achieve the same result without the "i" flag, we could have expanded the set to include the upper case letters by simply add [A-Z]. See below
 
-<pre>
-/[a-zA-Z]/g => <mark>The</mark> <mark>sky</mark> <mark>is</mark> <mark>blue</mark>
-</pre>
+![alt text](./img/regex-img-37_az_global_flag.png)
 
 #
 
@@ -262,9 +254,7 @@ To do this, we will need to create set that ranges across all letters and digits
 
 Let's now substitute the [0-9] for the shorthand version which will make the set a little cleaner.
 
-<pre>
-/[a-z\d]/i => <mark>M</mark>mehr1988
-</pre>
+![alt text](./img/regex-img-441_first_character.png)
 
 ### 4.4.2 Succeeding Characters
 
@@ -288,20 +278,16 @@ Step #2: Create The First Expression in the OR logic
 - letters
 - digits
 
-<pre>
-/[a-z\d](<mark>[a-z\d]</mark>)/i => <mark>Mm</mark>ehr1988
-</pre>
+![alt text](./img/regex-img-442_second_character.png)
 
 Step #3: Create The Second Expression in the OR logic
 
 - -letters
 - -digit
 
-<pre>
-/[a-z\d](<mark>[a-z\d]|-[a-z\d]</mark>)/i => <mark>Mm</mark>ehr1988
-</pre>
+![alt text](./img/regex-img-442_or_logic.png)
 
-With the folloiwng pattern we've also account for Rule #4 & Rule #5 which states "no double hyphens allowed" and the username must end with alphanumeric character.
+With the folloiwng pattern we've also accounted for Rule #4 & Rule #5 which states "no double hyphens allowed" and the username must end with alphanumeric character.
 
 ### 4.4.2 Apply OR logical to the remaining characters
 
@@ -315,9 +301,7 @@ Given that we've already accounted for the first character in the username, the 
 
 To achieve this criteria, we simply write {0,38} after OR logic.
 
-<pre>
-/[a-z\d]([a-z\d]|-[a-z\d])<mark>{0,38}</mark>/i => <mark>Mmehr1988</mark>
-</pre>
+![alt text](./img/regex-img-442_or_logic_remaining.png)
 
 It might seem that we are done, but there is still a couple of things we need to account for.
 

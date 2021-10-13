@@ -33,6 +33,12 @@
 
    4.2 [Regex Pattern Rules](#42-regex-pattern-rules)
 
+   4.3 [Regex Pattern Build](#43-regex-pattern-build)
+
+   4.4 [Final Regex Pattern](#44-final-regex-pattern)
+
+5. [Online Resources For Learning](#5-online-resources-for-learning)
+
 #
 
 ## 1. Summary
@@ -45,17 +51,15 @@ By definition,
 
 MDN Web Docs: [Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 
-Surprisingly, regular expressions were not built for computers. It was developed to explain the nervous system and it wasn't until 1956 that a scientist by the name Stephen Kleene converted the concept to what we know it be as it is today.
+It might seem surprising, but the initial purpose of regular expressions was not meant for computers. Instead, the idea was developed to explain the nervous system and it wasn't until 1956 that a scientist by the name Stephen Kleene adapted the concept to the model we know it be today.
 
-In todays world, the primary purpose of regular expressions is for matching and validation purposes. A perfect example is when you're signing up for a service online and you have to provide a valid email address. Regular expressions can be used to quickly check whether you've provide a valid email.
+In the world of web development, regular expressions are used for matching and validation purposes. A perfect example is when you want to create a password for logging into a website. Regular expressions can be used to check whether the password you've entered meets the complexity requirements the website has set - "Your password needs to be at least 8 characters long".
 
-Another example is when you want to create a password for logging into a website. Regular expressions can be used to check whether the password you've entered meets the complexity requirements the website has set - "Your password needs to be at least 8 characters long".
-
-### Why Github Username Regex Tutorial?
+### What & Why?
 
 During the tenth week of my bootcamp, I was tasked with building a command line app that generated a team profile based on user input. One of the questions used to generate a team members profile was to provide a valid Github username. It was my task to create a validation function to replicate the same functionality that would be expected from Github.
 
-At the time of writing the code for the app, I decided on using the if-else polymorphism technique to check for invalid submissions. However, this took 14 lines of code.
+At the time of writing the code for this app, I decided on using the if-else polymorphism technique to check for invalid submissions. However, this took 14 lines of code.
 
 ```md
 const gitCheck = (value) => {
@@ -81,9 +85,7 @@ If you're interest in the app, please check the below link.
 
 - Team Profile Generator Github Repo [link](https://github.com/mmehr1988/super-octo-bassoon)
 
-It should be noted that the regular expression used in this tutorial was not written by me, but rather taken from this npm package.
-
-- For more information, please check out the following [link](https://github.com/mmehr1988/super-octo-bassoon)
+It should be noted that the regular expression used in this tutorial was not written by me, but rather from an npm package. For more information, please check out the following [link](https://www.npmjs.com/package/github-username-regex).
 
 #
 
@@ -92,21 +94,22 @@ It should be noted that the regular expression used in this tutorial was not wri
 The below is a table that summarizes some of the terminology used throughout this tutorial.
 
 | Term         | Definition                                                   |
-| ------------ | ------------------------------------------------------------ |
+| ------------ | ------------------------------------------------------------ | --- |
 | Regex        | Patterns used to match character combinations in strings     |
-| String       | Text that is used to match the pattern                       |
-| Digits       | Numbers from 0-9                                             |
+| Input String | Text that is used to match the pattern                       |
+| Digits       | Numbers from 0-9                                             | \   |
+| Pattern      | A sequence of characters that specifies a search pattern     | \   |
 | Letters      | The alphabet a-z or A-Z.                                     |
 | Symbols      | ! $ % ^ & \* ( ) \_ + \| ~ - = ` { } [ ] : ” ; ' < > ? , . / |
 | White Space  | Spaces, tabs, line breaks                                    |
-| Characters   | A character is a letter, a digit, or symbol                  |
+| Character    | A character is a letter, a digit, or symbol                  |
 | Alphanumeric | A character that is either a letter or digit                 |
 
 #
 
 ## 3. Regex Components
 
-Regular expression components are characters used to build the pattern. Each character represents a specific function. In general, there are a total of eight components, and we will be discussing each one.
+Regex components are characters used to build the pattern to test an input string for matching or validation purposes. In general, there are a total of eight components, and we will be discussing each one.
 
 ### 3.1 Anchors
 
@@ -119,7 +122,7 @@ Anchors are used for position matching within a string. Typical use is for when 
 
 ### 3.2 Quantifiers
 
-Quantifiers are used for when you want to specify the number times a specific character, group, or character class should be matched within a string.
+Quantifiers are used for when you want to specify the number times a specific character, [group](#33-grouping-constructs), or [character classes](#35-character-classes) should be matched within a string.
 
 | Symbol    | Definition                   |
 | --------- | ---------------------------- |
@@ -142,7 +145,7 @@ Grouping is used for when you want to apply a pattern to the substrings of an in
 
 A bracket expression is when you take a list of characters and place them between square brackets. The list of characters between the brackets is called a "set".
 
-The main types of bracket expressions are either positive or negatve bracket expressions.
+For simplicity, the two main types are positive or negatve bracket expressions.
 
 - Positive: When you want to match any character in the set.
 
@@ -159,11 +162,11 @@ To specify a negative expression, you simply use a caret symbol "^" at the begin
 
 ### 3.5 Character Classes
 
-A character class is the type of character specified in the set. The character class for [123] is digits.
+A character class is the type of character specified in the set. As an example, the character class for [123] is digits.
 
 The below table illustrates the main types of character classes.
 
-| Types           | Pattern       | Equivalent To | Definition                                            |
+| Character Class | Pattern       | Equivalent To | Definition                                            |
 | --------------- | ------------- | :-----------: | ----------------------------------------------------- |
 | range           | [a-e]         |       -       | Match any lower case letter from "a" to "e"           |
 | dot             | .             |    [^\n\r]    | Match any character except line breaks.               |
@@ -173,8 +176,6 @@ The below table illustrates the main types of character classes.
 | not white space | [^ \t\r\n\f]  |      /S       | Matches any none white space                          |
 | word            | [A-Za-z0-9_]  |      /w       | Matches any alphanumeric & underscore characters      |
 | not word        | [^a-za-z0-9_] |      /W       | Matches any none alphanumeric & underscore characters |
-
-The important takeway here is the "Equivalent To" column. Think of them as shortcuts.
 
 ### 3.6 The OR Operator
 
@@ -194,19 +195,21 @@ Regular expressions can be broken down into two sections. The first section is t
 
 It's important to keep in mind that flags are optional and are not mandatory. The reason for the optionality is that flags change the behaviour of a regex pattern.
 
-As an example, let's use "Why is the sky blue?" as the input string.
+To fully understand flags, lets run through a quick example and use "Why is the sky blue?" as the input string. The goal is to write a regex pattern that will match all the letters excluding the question mark at the end.
 
 #### No Flags
 
+- [a-z] - Character class range for letters "a" to "z".
+
 ![alt text](./img/regex-img-37_no_flags.png)
 
-- In the current regex pattern will look for the first lower case letter in the input string.
+- In section [Character Classes](#35-character-classes), we discussed that wrapping characters inside square brackets would match all the characters inside the bracket. In theory, one would think that the above pattern would work, but it's not that simple. This is where flags come to our help.
 
 #### Global Flag or "g"
 
 ![alt text](./img/regex-img-37_global_flag.png)
 
-- By placing a "g" at the end of the expression, we're telling the regex engine to match all the lower case letters in the input string. However, the upper case "T" is still unmatched.
+- By placing a "g" at the end of the expression, we're telling the regex engine to match all the lower case letters in the input string. However, the upper case "W" is still unmatched.
 
 #### Case Insensitivity Flag or "i"
 
@@ -216,15 +219,15 @@ As an example, let's use "Why is the sky blue?" as the input string.
 
 In summary, what we've done is we've modifed the initial character class range [a-z] which accounts only for lower case letters to match all lower case and upper case letters in the input string.
 
-To achieve the same result without the "i" flag, we could have expanded the set to include the upper case letters by simply add [A-Z]. See below
+To achieve the same result without the "i" flag, we could have expanded the set to include the upper case letters by simply adding [A-Z]. See below
 
 ![alt text](./img/regex-img-37_az_global_flag.png)
 
 ### 3.8 Character Escapes
 
-The last regex component to understand before we begin writing out our Github Regex Username Pattern is "Character Escapes".
+The last regex component to understand before we begin writing our Github Regex Username Pattern is "Character Escapes".
 
-The best way to explain this is concept is to explain through an example. So lets do that.
+The best way to explain this is concept is yet again through an example.
 
 Let's say you're building a website and you want to give the user the ability to upload images. To make sure users only upload images, you want to write a regex pattern that only accepts `.png` files.
 
@@ -234,7 +237,7 @@ For the first attempt, your pattern might look something like the below.
 /.png/g
 ```
 
-#### Scenerio #1: profile.png
+#### Scenerio #1: Filename = profile.png
 
 ![alt text](./img/regex-img-38_escape_1.png)
 
@@ -246,7 +249,7 @@ In this case, we would expect a fail, but check out the below image. The file na
 
 Why do you think that is?
 
-#### Scenerio #2: profilepng
+#### Scenerio #2: Filename: profilepng
 
 ![alt text](./img/regex-img-38_escape_2.png)
 
@@ -256,21 +259,21 @@ So when we write `/.png/g`, we are stating that the regex engine should return p
 
 So in our scenerio, "`epng` was passed, when it should have failed.
 
-In order to specify that we want only want `.png` to show a passing result, we need to "character escape" the "dot" character class.
+In order to specify that we only want `.png` to show a passing result, we need to "character escape" the "dot" character class.
 
-To do this, we need to place the character escape symbol "forward slash" or "\" infront of the dot.
+To do this, place the character escape symbol "forward slash" or "\" infront of the dot.
 
 ```
 /\.png/g
 ```
 
-As you can see with the below image, there is only one match.
+As you can see with the below image, the correct file matched while the incorrect file did not.
 
 ![alt text](./img/regex-img-38_escape_3.png)
 
 ## 4. Github Username Regex Explanation
 
-Now that we have a understanding of the most important concept used in building regular expressions, let's break down "Github Username Regex".
+Now that we have an understanding of the most important concept used in building regular expressions, let's break down "Github Username Regex Pattern".
 
 ### 4.1 Regex Pattern Rules
 
@@ -304,7 +307,7 @@ Now that we've established the rules we can begin writing the pattern.
 Tutorial Username: Mmehr1988
 ```
 
-### 4.3.1 Ignores case sensitivity
+### 4.3.1 Ignore Case Sensitivity
 
 Based on section [3.7 Flags](#37-flags), to ignore case sensitivity, we can simply use the "i" flag. Therefore, as a starting point, let's just get that out of the way so we can focus on the actual pattern.
 
@@ -312,17 +315,17 @@ Based on section [3.7 Flags](#37-flags), to ignore case sensitivity, we can simp
 / /i
 ```
 
-### 4.3.2 Start with alphanumeric characters
+### 4.3.2 Pattern Starts With Alphanumeric Characters
 
-Our second rule states that the username must begin with an alphanumeric character. This both digits and letters are acceptable.
+Our second rule states that the username must begin with an alphanumeric character. This means both digits and letters are acceptable.
 
-To do this, we will need to create set that ranges across all letters and digits. Based on section [Character Classes](#35-character-classes), for the letters we can state [a-z] and for digits we can write [0-9]. Combining the 2, we would get [a-z0-9].
+To do this, we will need to create a character "set" that ranges across all letters and digits. Based on section [Character Classes](#35-character-classes), for the letters we can use [a-z] and for digits we can write [0-9]. Combining the 2, we would get [a-z0-9].
 
-Let's now substitute the [0-9] for the shorthand version which will make the set a little cleaner.
+Let's now substitute the [0-9] for the shorthand version which will make the character set a little cleaner.
 
 ![alt text](./img/regex-img-441_first_character.png)
 
-### 4.3.2 Succeeding Characters
+### 4.3.2 Account For Remaining Characters
 
 Our third rule states that the succeeding username character must either be alphanumeric OR a hyphen and then alphanumeric. See below.
 
@@ -355,13 +358,13 @@ Step #3: Create The Second Expression in the OR logic
 
 With the folloiwng pattern we've also accounted for Rule #4 & Rule #5 which states "no double hyphens allowed" and the username must end with alphanumeric character.
 
-### 4.3.2 Apply OR logical to the remaining characters
+### 4.3.2 OR Logical
 
 We need to now figure out how to apply the OR logic across all the remaining characters. To do this final step, we will have to use quantifiers.
 
-In [3.2 Quantifiers](#32-quantifiers), quantifiers are used for when you want to specify the number times a specific character, group, or character class should be matched within a string.
+Per section [3.2 Quantifiers](#32-quantifiers), quantifiers are used for when you want to specify the number times a specific character, group, or character class should be matched within a string.
 
-The specific quantifier we need to use in our scenerio will be the { n , m }. The reason for this is related to Rule #6 which states that the maximum number of character for any username cannot exceed 39 characters. If it does, the username test must fail.
+The specific quantifier we need to use in our scenerio will be the `{ n , m }`. The reason for this is related to Rule #6 which states that the maximum number of character for any username cannot exceed 39 characters. If it does, the username test must fail.
 
 Given that we've already accounted for the first character in the username, the remaining character count must be between 0 to 38 characters.
 
@@ -379,14 +382,21 @@ The reason for this is that we haven't established a start or an end to where th
 
 If the username entered is greater than 39 characters, then the test will fail.
 
-As we learned in section [3.1 Anchors](#31-anchors), we use the caret symbol to match the beginning of the string and the dollar symbol to match the end of the string.
+Referring to section [3.1 Anchors](#31-anchors), we use the caret symbol to match the beginning of the string and the dollar symbol to match the end of the string.
 
 By applying both anchors to our pattern we will have correctly created our Github Username Regex Expression.
 
 ![alt text](./img/regex-img-442_start_end_anchors.png)
 
-### 4.1 Regex Pattern
+### 4.4 Final Regex Pattern
 
 ```
-/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i
+/^[a-z\d]([a-z\d]|-([a-z\d])){0,38}$/i
 ```
+
+## 5. Online Resources For Learning
+
+- [regexr](https://regexr.com/): Helpful website to write and test regex patterns
+- [Youtube Tutorial](https://www.youtube.com/watch?v=9RksQ5YT7FM&t=52s): There are thousands of videos on this topic, but for some reason this video just made the topic a little more fun. Plus, the kid is a great teacher.
+- [Example Tutorial](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial): A great regex tutorial
+- [Github Repo](https://github.com/ziishaned/learn-regex/blob/master/README.md): This a great github repo explaining all the major concepts.

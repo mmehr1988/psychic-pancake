@@ -94,11 +94,11 @@ It should be noted that the regular expression used in this tutorial was not wri
 The below is a table that summarizes some of the terminology used throughout this tutorial.
 
 | Term         | Definition                                                   |
-| ------------ | ------------------------------------------------------------ | --- |
+| ------------ | ------------------------------------------------------------ |
 | Regex        | Patterns used to match character combinations in strings     |
 | Input String | Text that is used to match the pattern                       |
-| Digits       | Numbers from 0-9                                             | \   |
-| Pattern      | A sequence of characters that specifies a search pattern     | \   |
+| Digits       | Numbers from 0-9                                             |
+| Pattern      | A sequence of characters that specifies a search pattern     |
 | Letters      | The alphabet a-z or A-Z.                                     |
 | Symbols      | ! $ % ^ & \* ( ) \_ + \| ~ - = ` { } [ ] : ” ; ' < > ? , . / |
 | White Space  | Spaces, tabs, line breaks                                    |

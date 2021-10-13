@@ -39,6 +39,8 @@
 
 5. [Online Resources For Learning](#5-online-resources-for-learning)
 
+6. [Author](#6-author)
+
 #
 
 ## 1. Summary
@@ -400,3 +402,8 @@ By applying both anchors to our pattern we will have correctly created our Githu
 - [Youtube Tutorial](https://www.youtube.com/watch?v=9RksQ5YT7FM&t=52s): There are thousands of videos on this topic, but for some reason this video just made the topic a little more fun. Plus, the kid is a great teacher.
 - [Example Tutorial](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial): A great regex tutorial
 - [Github Repo](https://github.com/ziishaned/learn-regex/blob/master/README.md): This a great github repo explaining all the major concepts.
+
+## 6. Author
+
+Github Portfolio Link: [Mehdi Mehrabani](https://github.com/mmehr1988)<br>
+Email Contact: tatash.my@gmail.com

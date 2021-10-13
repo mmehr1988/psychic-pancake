@@ -29,9 +29,9 @@
 
 4. [Github Username Regex Explanation](#4-github-username-regex-explanation)
 
-   4.1 [Regex Pattern](#41-regex-pattern)
+   4.1 [Regex Pattern Rules](#41-regex-pattern-rules)
 
-   4.2 [Regex Pattern Rules](#42-regex-pattern-rules)
+   4.2 [Regex Pattern Username Tests](#42-regex-pattern-username-tests)
 
    4.3 [Regex Pattern Build](#43-regex-pattern-build)
 
